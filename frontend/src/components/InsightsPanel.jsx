@@ -26,8 +26,10 @@ export default function InsightsPanel({ metrics }) {
 
   return (
     <div className="card">
-      <h2>AI insights (optional)</h2>
-      <p style={{ margin: "0 0 0.5rem", fontSize: "0.9rem", color: "#475569" }}>
+      <div className="card-header">
+        <h2>AI insights (optional)</h2>
+      </div>
+      <p className="card-meta">
         Uses OpenAI when <code>OPENAI_API_KEY</code> is set on the server; otherwise returns a placeholder summary.
       </p>
       <textarea
@@ -42,21 +44,7 @@ export default function InsightsPanel({ metrics }) {
         </button>
       </div>
       {error && <p className="error">{error}</p>}
-      {text && (
-        <pre
-          style={{
-            marginTop: "1rem",
-            whiteSpace: "pre-wrap",
-            fontSize: "0.9rem",
-            background: "#f8fafc",
-            padding: "0.75rem",
-            borderRadius: 6,
-            border: "1px solid #e2e8f0",
-          }}
-        >
-          {text}
-        </pre>
-      )}
+      {text && <pre className="insight-output">{text}</pre>}
     </div>
   );
 }

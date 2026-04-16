@@ -1,7 +1,7 @@
 function DealRow({ deal, highlightName }) {
   const isBest = deal.filename === highlightName;
   return (
-    <tr style={isBest ? { background: "#f0fdf4" } : undefined}>
+    <tr className={isBest ? "highlight-row" : undefined}>
       <td>{deal.filename}</td>
       <td>{deal.net_profit}</td>
       <td>{deal.profit_margin_percent}%</td>
@@ -24,7 +24,7 @@ export default function ComparisonTable({ comparison, error }) {
     return (
       <div className="card">
         <h2>Comparison</h2>
-        <p style={{ margin: 0, color: "#64748b" }}>Compare two or more uploaded files to see rankings.</p>
+        <p className="muted">Compare two or more uploaded files to see rankings.</p>
       </div>
     );
   }
@@ -34,7 +34,9 @@ export default function ComparisonTable({ comparison, error }) {
 
   return (
     <div className="card">
-      <h2>Comparison</h2>
+      <div className="card-header">
+        <h2>Comparison</h2>
+      </div>
       <table>
         <thead>
           <tr>

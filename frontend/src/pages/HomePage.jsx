@@ -59,12 +59,17 @@ export default function HomePage() {
   const lastMetrics = analyzeResult?.metrics || null;
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "1.25rem" }}>
-      <header style={{ marginBottom: "1.25rem" }}>
+    <div className="app-shell">
+      <header className="hero">
         <h1>Deal Intelligence Assistant</h1>
-        <p style={{ margin: 0, color: "#475569", fontSize: "0.95rem" }}>
+        <p className="hero-copy">
           Upload financial CSVs, view metrics, compare deals, and optionally generate AI explanations.
         </p>
+        <div className="status-pills">
+          <span className="pill">{uploaded.length} uploaded</span>
+          <span className="pill">{files.length} selected</span>
+          <span className="pill">{busy ? "Processing" : "Ready"}</span>
+        </div>
       </header>
 
       {globalError && (
@@ -77,12 +82,12 @@ export default function HomePage() {
 
       <FileUpload files={files} onFilesChange={setFiles} disabled={busy} />
 
-      <div className="card" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
+      <div className="card action-row">
         <button type="button" disabled={busy || !files.length} onClick={handleUploadAndAnalyze}>
           {busy ? "Working…" : "Upload & analyze"}
         </button>
         {uploaded.length > 0 && (
-          <span style={{ fontSize: "0.9rem", color: "#64748b" }}>
+          <span className="action-note">
             {uploaded.length} file(s) on server — IDs ready for compare.
           </span>
         )}

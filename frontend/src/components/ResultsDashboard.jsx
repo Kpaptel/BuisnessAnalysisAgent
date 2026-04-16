@@ -11,7 +11,7 @@ export default function ResultsDashboard({ analyzeResult, error }) {
     return (
       <div className="card">
         <h2>Single-file analysis</h2>
-        <p style={{ margin: 0, color: "#64748b" }}>Upload and analyze a file to see metrics.</p>
+        <p className="muted">Upload and analyze a file to see metrics.</p>
       </div>
     );
   }
@@ -19,10 +19,12 @@ export default function ResultsDashboard({ analyzeResult, error }) {
   const m = analyzeResult.metrics || {};
   return (
     <div className="card">
-      <h2>Single-file analysis</h2>
-      <p style={{ margin: "0 0 0.75rem", fontSize: "0.9rem" }}>
+      <div className="card-header">
+        <h2>Single-file analysis</h2>
+      </div>
+      <p className="file-title">
         <strong>{analyzeResult.filename}</strong>
-        <span style={{ color: "#64748b" }}> ({analyzeResult.file_id?.slice(0, 8)}…)</span>
+        <span className="file-id"> ({analyzeResult.file_id?.slice(0, 8)}…)</span>
       </p>
       <table>
         <tbody>
